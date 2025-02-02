@@ -38,8 +38,8 @@ public class InteractWithWebElement {
 		WebElement createAccount = driver.findElement(By.linkText("Create Account"));
 		createAccount.click();
 		//accountName  Textbox
-		WebElement accountName = driver.findElement(By.id("accountName"));
-		accountName.sendKeys("Kpwo");
+		String enterAccName = "LAKSHME";
+		WebElement accountName = driver.findElement(By.id("accountName")).sendKeys(enterAccName);
 		//description  Textbox
 		WebElement description = driver.findElement(By.name("description"));
 		description.sendKeys("Selenium Automation Tester");
@@ -59,9 +59,18 @@ public class InteractWithWebElement {
 		WebElement state = driver.findElement(By.xpath("//select[@id='generalStateProvinceGeoId']"));
 		Select option3 = new Select(state);
 		option3.selectByValue("TX");
-        //createAccount Button
-        WebElement createAccount1 = driver.findElement(By.className("smallSubmit"));
-		createAccount1.click();
+                //createAccount Button
+               WebElement createAccount1 = driver.findElement(By.className("smallSubmit"));
+	       createAccount1.click();
+		String accountname=driver.findElement(By.xpath("(//span[text()='Account Name']/parent::td/following-sibling::td)[1]")).getText();
+		if(accountname.contains(enterAccName))
+		{
+			System.out.println("Account name is correct");
+		}
+		else
+		{
+			System.out.println("Account name is not matching");
+		}
 
 		
 		
